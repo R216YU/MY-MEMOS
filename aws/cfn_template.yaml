@@ -14,7 +14,13 @@ Parameters:
     Description: "Route53のホストゾーンID (例: Z1234567890)"
   ExistingCertificateArn:
     Type: String
+    Default: ""
     Description: "既存のACM証明書ARN (空の場合は新規作成)"
+
+Conditions:
+  UseExistingCertificate: !Not
+    - !Equals [!Ref ExistingCertificateArn, ""]
+  CreateCertificate: !Equals [!Ref ExistingCertificateArn, ""]
 
 Resources:
   SiteBucket:
@@ -115,7 +121,10 @@ Resources:
             ResponsePagePath: /404.html
             ErrorCachingMinTTL: 60
         ViewerCertificate:
-          AcmCertificateArn: !Ref SiteCertificate
+          AcmCertificateArn: !If
+            - UseExistingCertificate
+            - !Ref ExistingCertificateArn
+            - !Ref SiteCertificate
           SslSupportMethod: sni-only
           MinimumProtocolVersion: TLSv1.2_2021
 
