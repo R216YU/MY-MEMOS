@@ -8,8 +8,8 @@
     "build": "npm run prisma:generate && next build",
     "start": "next start",
     "lint": "biome check",
-    "test": "vitest",
     "format": "biome check --write",
+    "test": "vitest",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name"
   },
