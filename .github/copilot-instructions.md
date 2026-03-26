@@ -10,6 +10,8 @@
 - `npm run format`: Formatterを実行する
 - `npm run build`: ビルドを実行する
 - `npm run test`: Testを実行する
+- `npm run prisma:generate`: Prisma Clientを生成する(Prismaの型定義を生成・更新する)
+- `npm run prisma:migrate`: Prisma Migrateを実行する(データベースのマイグレーションを実行する)
 
 ## 命名規則
 
