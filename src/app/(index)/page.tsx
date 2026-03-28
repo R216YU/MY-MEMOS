@@ -1,7 +1,5 @@
-import IndexContainer from "./index-container";
-
-const Page = () => {
-  return <IndexContainer />;
+const IndexPage = () => {
+  return <div>IndexPage</div>;
 };
 
-export default Page;
+export default IndexPage;

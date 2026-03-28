@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  redirects() {
+    return [
+      {
+        source: "/auth",
+        destination: "/auth/posts",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
