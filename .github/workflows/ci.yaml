@@ -119,7 +119,7 @@ jobs:
           exit 1
 
       - name: Run test
-        run: npm run test --if-present
+        run: npm run test
 
   build:
     name: Build
