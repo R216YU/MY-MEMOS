@@ -4,7 +4,12 @@
 - 単一責任の原則を守る
 - ディレクトリはshared, page固有フォルダ(\_xxx)に分け、共通コードはshared, ページ固有コードはページ固有フォルダに配置する
 
+## ライブラリ
+
+- UI: shadcn/ui, tailwindcss
+
 ## ディレクトリ構造
 
 - src/shared: 全ての画面で共通利用するソース
 - src/app/~~/\_xx: ページ固有のソース
+- src/shadcn: shadcnのコマンドで生成されたソース

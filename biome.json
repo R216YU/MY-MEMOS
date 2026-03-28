@@ -14,7 +14,8 @@
       "!dist",
       "!build",
       "!prisma",
-      "!generated"
+      "!generated",
+      "!src/shadcn"
     ]
   },
   "formatter": {
