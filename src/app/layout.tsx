@@ -23,7 +23,7 @@ type Props = {
 
 const RootLayout = ({ children }: Props) => {
   const fonts = `${geistSans.variable} ${geistMono.variable}`;
-  const styles = `h-full antialiased`;
+  const styles = `h-full p-4 antialiased`;
 
   return (
     <html lang="ja" className={`${fonts} ${styles}`}>
