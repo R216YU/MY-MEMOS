@@ -16,6 +16,7 @@ import {
   createCategory,
   deleteCategory,
   getCategoryById,
+  getCategoriesTree,
   getCategories,
   updateCategory,
 } from "./category-repository";
@@ -133,6 +134,46 @@ describe("category-repository", () => {
 
       expect(mockCategory.delete).toHaveBeenCalledWith({ where: { id: 1 } });
       expect(result).toEqual(deleted);
+    });
+  });
+
+  describe("getCategoriesTree", () => {
+    it("カテゴリ・セクション・記事を階層的に取得する", async () => {
+      const tree = [
+        {
+          id: 1,
+          name: "React",
+          order: 0,
+          sections: [
+            {
+              id: 1,
+              name: "フックス",
+              order: 0,
+              categoryId: 1,
+              posts: [{ id: 1, title: "useStateについて", order: 0, published: true }],
+            },
+          ],
+        },
+      ];
+      mockCategory.findMany.mockResolvedValue(tree);
+
+      const result = await getCategoriesTree();
+
+      expect(mockCategory.findMany).toHaveBeenCalledWith({
+        orderBy: { order: "asc" },
+        include: {
+          sections: {
+            orderBy: { order: "asc" },
+            include: {
+              posts: {
+                orderBy: { order: "asc" },
+                select: { id: true, title: true, order: true, published: true },
+              },
+            },
+          },
+        },
+      });
+      expect(result).toEqual(tree);
     });
   });
 });

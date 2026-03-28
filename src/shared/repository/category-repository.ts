@@ -18,6 +18,24 @@ export const getCategoryById = async (id: number) => {
   return prisma.category.findUnique({ where: { id } });
 };
 
+/** エディターのツリー表示用：カテゴリ > セクション > 記事（タイトルのみ）を一括取得 */
+export const getCategoriesTree = async () => {
+  return prisma.category.findMany({
+    orderBy: { order: "asc" },
+    include: {
+      sections: {
+        orderBy: { order: "asc" },
+        include: {
+          posts: {
+            orderBy: { order: "asc" },
+            select: { id: true, title: true, order: true, published: true },
+          },
+        },
+      },
+    },
+  });
+};
+
 export const createCategory = async (data: CreateCategoryInput) => {
   return prisma.category.create({ data });
 };
