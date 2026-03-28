@@ -19,14 +19,7 @@
 - コンポーネント名は常に大文字で、単語はキャメルケースで区切る (例: `MyComponent`)
 - ディレクトリは常に小文字で、単語はハイフンで区切る (例: `components/my-component`)
 
-## クラウドアーキテクチャ
+## ドキュメント
 
-- AWSを利用する
-- S3, CloudFront, Route53, Certificate Managerを利用する
-- IaCで管理する
-
-## ソフトウェアアーキテクチャ
-
-- 常にテストのしやすいコンポーネント、関数を実装する
-- 単一責任の原則を守る
-- ディレクトリはshared, page固有フォルダ(\_xxx)に分け、共通コードはshared, ページ固有コードはページ固有フォルダに配置する
+- **docs/cloud-architecture.md**: クラウドアーキテクチャに関するドキュメント
+- **docs/software-architecture.md**: ソフトウェアアーキテクチャに関するドキュメント
